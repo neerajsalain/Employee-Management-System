@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<section class="card">
+  <h1>Profile</h1>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <p><strong>Name</strong></p>
+      <p><%= user.name %></p>
+    </div>
+    <div class="profile-card">
+      <p><strong>Email</strong></p>
+      <p><%= user.email %></p>
+    </div>
+    <div class="profile-card">
+      <p><strong>Role</strong></p>
+      <p><%= user.role %></p>
+    </div>
+  </div>
+</section>
+<%- include('partials/footer') %>

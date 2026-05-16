@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+<section class="card auth-card">
+  <h1>Create Account</h1>
+  <% if (errors && errors.length) { %>
+  <div class="alert alert-danger">
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+  <form method="POST" action="/register" class="form-grid">
+    <label>
+      Full Name
+      <input type="text" name="name" required value="<%= form.name || '' %>" />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required value="<%= form.email || '' %>" />
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" required />
+    </label>
+    <label>
+      Confirm Password
+      <input type="password" name="confirmPassword" required />
+    </label>
+    <button type="submit" class="button button-primary">Register</button>
+  </form>
+  <p class="small-text">Already registered? <a href="/login">Login here</a>.</p>
+</section>
+<%- include('partials/footer') %>

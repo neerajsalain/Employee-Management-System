@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<section class="card auth-card">
+  <h1><%= buttonText %></h1>
+  <% if (errors && errors.length) { %>
+  <div class="alert alert-danger">
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+  <form method="POST" action="<%= action %>" class="form-grid">
+    <label>
+      Employee Name
+      <input type="text" name="name" required value="<%= employee.name || '' %>" />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required value="<%= employee.email || '' %>" />
+    </label>
+    <label>
+      Department
+      <input type="text" name="department" required value="<%= employee.department || '' %>" />
+    </label>
+    <label>
+      Position
+      <input type="text" name="position" required value="<%= employee.position || '' %>" />
+    </label>
+    <label>
+      Salary
+      <input type="number" name="salary" step="0.01" required value="<%= employee.salary || '' %>" />
+    </label>
+    <div class="form-actions">
+      <button type="submit" class="button button-primary"><%= buttonText %></button>
+      <a class="button button-secondary" href="/employees">Cancel</a>
+    </div>
+  </form>
+</section>
+<%- include('partials/footer') %>
