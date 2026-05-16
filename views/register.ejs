@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Employee Management System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="card auth-card">
+        <h1>Create an account</h1>
+        <% if (errors && errors.length) { %>
+        <div class="alert alert-error">
+          <ul>
+            <% errors.forEach((error) => { %>
+            <li><%= error %></li>
+            <% }) %>
+          </ul>
+        </div>
+        <% } %>
+
+        <form action="/register" method="POST" class="auth-form">
+          <label>
+            Full Name
+            <input type="text" name="name" value="<%= form.name || "" %>" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" value="<%= form.email || "" %>" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <label>
+            Confirm Password
+            <input type="password" name="confirmPassword" required />
+          </label>
+          <button type="submit" class="button button-primary">Create Account</button>
+        </form>
+
+        <p class="alt-action">
+          Already have an account? <a href="/login">Login here</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

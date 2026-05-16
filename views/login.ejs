@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Employee Management System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="card auth-card">
+        <h1>Sign in to your account</h1>
+        <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+        <% } %>
+
+        <form action="/login" method="POST" class="auth-form">
+          <label>
+            Email
+            <input type="email" name="email" value="<%= form.email || "" %>" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" required />
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="rememberMe" <%= form.rememberMe ? "checked" : "" %> />
+            Remember me
+          </label>
+          <button type="submit" class="button button-primary">Sign In</button>
+        </form>
+
+        <p class="alt-action">
+          Don&rsquo;t have an account? <a href="/register">Register here</a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

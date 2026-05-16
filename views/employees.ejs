@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees - Employee Management System</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Employee Directory</h1>
+      <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/employees/new">Create Employee</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </header>
+
+    <section class="panel">
+      <% if (employees && employees.length) { %>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% employees.forEach((emp) => { %>
+          <tr>
+            <td><%= emp.name %></td>
+            <td><%= emp.email %></td>
+            <td><%= emp.department %></td>
+            <td><%= emp.position %></td>
+            <td>$<%= Number(emp.salary).toFixed(2) %></td>
+            <td>
+              <a href="/employees/<%= emp.id %>/edit" class="button-link">Edit</a>
+              <form action="/employees/<%= emp.id %>/delete" method="POST" class="inline-form">
+                <button type="submit" class="button-link">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p>No employee records found.</p>
+      <% } %>
+    </section>
+  </body>
+</html>
